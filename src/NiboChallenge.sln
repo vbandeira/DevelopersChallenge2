@@ -1,0 +1,54 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiboChallenge.Domain", "NiboChallenge.Domain\NiboChallenge.Domain.csproj", "{87596559-A750-44B1-B956-A1BBC52F32E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiboChallenge.Domain.Tests", "NiboChallenge.Domain.Tests\NiboChallenge.Domain.Tests.csproj", "{30488E26-6255-40CE-A8BF-39327E1363F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiboChallenge.Infrastructure", "NiboChallenge.Infrastructure\NiboChallenge.Infrastructure.csproj", "{F9D18B97-1017-4898-9C95-D7DA0D613552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infrastructure", "4. Infrastructure", "{0EAD531E-C969-42B5-BA46-960F1830D2A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain", "3. Domain", "{9414EC8A-6E7B-4FD8-9968-62BF2BDD4B1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiboChallenge.Infrastructure.Tests", "NiboChallenge.Infrastructure.Tests\NiboChallenge.Infrastructure.Tests.csproj", "{05068669-65D4-4FD6-9CFD-DAD2113A98E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiboChallenge.DomainServices", "NiboChallenge.DomainServices\NiboChallenge.DomainServices.csproj", "{F01CDD13-A9E6-4D33-8FC3-5B443F756932}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. DomainServices", "2. DomainServices", "{B038480B-C1DF-4F97-96CE-F7AACC5542FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87596559-A750-44B1-B956-A1BBC52F32E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87596559-A750-44B1-B956-A1BBC52F32E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87596559-A750-44B1-B956-A1BBC52F32E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87596559-A750-44B1-B956-A1BBC52F32E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30488E26-6255-40CE-A8BF-39327E1363F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30488E26-6255-40CE-A8BF-39327E1363F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30488E26-6255-40CE-A8BF-39327E1363F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30488E26-6255-40CE-A8BF-39327E1363F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D18B97-1017-4898-9C95-D7DA0D613552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D18B97-1017-4898-9C95-D7DA0D613552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D18B97-1017-4898-9C95-D7DA0D613552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D18B97-1017-4898-9C95-D7DA0D613552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05068669-65D4-4FD6-9CFD-DAD2113A98E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05068669-65D4-4FD6-9CFD-DAD2113A98E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05068669-65D4-4FD6-9CFD-DAD2113A98E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05068669-65D4-4FD6-9CFD-DAD2113A98E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01CDD13-A9E6-4D33-8FC3-5B443F756932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01CDD13-A9E6-4D33-8FC3-5B443F756932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01CDD13-A9E6-4D33-8FC3-5B443F756932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01CDD13-A9E6-4D33-8FC3-5B443F756932}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F9D18B97-1017-4898-9C95-D7DA0D613552} = {0EAD531E-C969-42B5-BA46-960F1830D2A6}
+		{87596559-A750-44B1-B956-A1BBC52F32E0} = {9414EC8A-6E7B-4FD8-9968-62BF2BDD4B1A}
+		{30488E26-6255-40CE-A8BF-39327E1363F0} = {9414EC8A-6E7B-4FD8-9968-62BF2BDD4B1A}
+		{05068669-65D4-4FD6-9CFD-DAD2113A98E5} = {0EAD531E-C969-42B5-BA46-960F1830D2A6}
+		{F01CDD13-A9E6-4D33-8FC3-5B443F756932} = {B038480B-C1DF-4F97-96CE-F7AACC5542FA}
+	EndGlobalSection
+EndGlobal
