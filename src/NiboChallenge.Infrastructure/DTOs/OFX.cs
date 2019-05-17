@@ -1,5 +1,5 @@
 ﻿using System;
-namespace NiboChallenge.Domain.Entities
+namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFX
     {

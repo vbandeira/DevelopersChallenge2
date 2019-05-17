@@ -1,5 +1,6 @@
 ﻿using System;
 using NiboChallenge.Domain.Entities;
+using NiboChallenge.Infrastructure.Entities;
 
 namespace NiboChallenge.Infrastructure.Mappers
 {
@@ -12,7 +13,7 @@ namespace NiboChallenge.Infrastructure.Mappers
                 Memo = transactionDTO.MEMO,
                 TransactionAmmount = transactionDTO.TRNAMT,
                 Type = transactionDTO.TRNTYPE.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
-                DatePosted = transactionDTO.DTPOSTED
+                DatePosted = transactionDTO.DTPOSTED //TODO: Convert to DateTime
             };
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using NiboChallenge.Domain.Entities;
+using NiboChallenge.Infrastructure.Entities;
 
 namespace NiboChallenge.Infrastructure
 {
@@ -19,10 +19,12 @@ namespace NiboChallenge.Infrastructure
             }
         }
 
+        //TODO: Modify to support multiple files
         public OFX Load(string ofx) => Parse(Encoding.UTF8.GetString(Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(ofx))));
 
         private string ConvertSGMLTOXML(string sgml)
         {
+            //TODO: Enhance function
             using (var reader = new StringReader(sgml))
             {
                 string line;
@@ -31,15 +33,15 @@ namespace NiboChallenge.Infrastructure
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var tagEnd = line.IndexOf(">");
+                    var tagEnd = line.IndexOf(">", StringComparison.CurrentCultureIgnoreCase);
 
                     if (tagEnd != line.Length - 1)
                     {
-                        var tagStart = line.IndexOf("<");
+                        var tagStart = line.IndexOf("<", StringComparison.CurrentCultureIgnoreCase);
 
                         var tagName = line.Substring(tagStart + 1, (tagEnd - tagStart) - 1);
 
-                        if (line.IndexOf(string.Format("</{0}>", tagName)) > -1)
+                        if (line.IndexOf($"</{tagName}>", StringComparison.CurrentCultureIgnoreCase) > -1)
                         {
                             stringBuilder.AppendLine(line);
                         }
@@ -60,18 +62,15 @@ namespace NiboChallenge.Infrastructure
 
         private OFX Parse(string data)
         {
-            //var ofxDocument = new OFXDocument();
-
             var xmlDocument = new XmlDocument();
 
-            if (!data.StartsWith("OFXHEADER"))
+            if (!data.StartsWith("OFXHEADER", StringComparison.CurrentCultureIgnoreCase))
             {
                 throw new InvalidDataException();
             }
 
-            var ofx = data.Remove(0, data.IndexOf("<", StringComparison.Ordinal));
-
-            var header = data;
+            //TODO: Store data information (?)
+            var ofx = data.Remove(0, data.IndexOf("<", StringComparison.CurrentCultureIgnoreCase));
 
             ofx = ConvertSGMLTOXML(ofx);
 

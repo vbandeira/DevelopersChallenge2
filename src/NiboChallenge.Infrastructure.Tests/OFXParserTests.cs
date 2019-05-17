@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using NiboChallenge.Domain.Entities;
+using NiboChallenge.Infrastructure.Entities;
 using Xunit;
 
 namespace NiboChallenge.Infrastructure.Tests

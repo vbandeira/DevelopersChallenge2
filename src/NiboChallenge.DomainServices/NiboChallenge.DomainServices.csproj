@@ -6,5 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NiboChallenge.Domain\NiboChallenge.Domain.csproj" />
+    <ProjectReference Include="..\NiboChallenge.Infrastructure\NiboChallenge.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
