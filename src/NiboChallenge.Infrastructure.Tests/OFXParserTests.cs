@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NiboChallenge.Infrastructure.Entities;
 using Xunit;
 
@@ -11,15 +13,17 @@ namespace NiboChallenge.Infrastructure.Tests
         public void ShouldImportOFXFile()
         {
             // Arrange
-            var parser = new OFXDocumentParser();
 
             // Act
-            OFX ofxFile = parser.Load(new StreamReader("./extrato1.ofx").ReadToEnd());
+            IEnumerable<OFXDocument> ofxFiles = OFXDocumentParser.Load(new StreamReader("./extrato1.ofx").ReadToEnd());
 
             // Assert
-            Assert.NotNull(ofxFile);
-            Assert.NotNull(ofxFile.BANKMSGSRSV1);
-            Assert.NotNull(ofxFile.SIGNONMSGSRSV1);
+            Assert.NotNull(ofxFiles);
+            Assert.NotEmpty(ofxFiles);
+
+            OFXDocument ofxFile = ofxFiles.First();
+            Assert.NotNull(ofxFile.Bank);
+            Assert.NotNull(ofxFile.SIGNON);
         }
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXSIGNONMSGSRSV1SONRS
     {
-    
-        public OFXSIGNONMSGSRSV1SONRSSTATUS STATUS { get; set; }
+        [XmlElement("STATUS")]
+        public virtual OFXSIGNONMSGSRSV1SONRSSTATUS Status { get; set; }
 
-        public string DTSERVER { get; set; }
+        [XmlElement("DTSERVER")]
+        public virtual string DateServer { get; set; }
 
-        public string LANGUAGE { get; set; }
+        [XmlElement("LANGUAGE")]
+        public virtual string Language { get; set; }
 
     }
 }

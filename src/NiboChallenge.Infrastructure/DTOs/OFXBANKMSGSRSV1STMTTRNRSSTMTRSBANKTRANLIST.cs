@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXBANKMSGSRSV1STMTTRNRSSTMTRSBANKTRANLIST
     {
-        public string DTSTART { get; set; }
+        [XmlElement("DTSTART")]
+        public virtual string DateStart { get; set; }
 
-        public string DTEND { get; set; }
+        [XmlElement("DTEND")]
+        public virtual string DateEnd { get; set; }
 
-        public OFXBANKMSGSRSV1STMTTRNRSSTMTRSBANKTRANLISTSTMTTRN[] STMTTRN { get; set; }
+        [XmlElement("STMTTRN")]
+        public virtual OFXBANKMSGSRSV1STMTTRNRSSTMTRSBANKTRANLISTSTMTTRN[] Transactions { get; set; }
     }
 }

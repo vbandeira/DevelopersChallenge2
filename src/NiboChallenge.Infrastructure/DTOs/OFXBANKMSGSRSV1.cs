@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXBANKMSGSRSV1
     {
-        public OFXBANKMSGSRSV1STMTTRNRS STMTTRNRS { get; set; }
+        [XmlElement("STMTTRNRS")]
+        public virtual OFXBANKMSGSRSV1STMTTRNRS STMTSTRNRS { get; set; }
     }
 }

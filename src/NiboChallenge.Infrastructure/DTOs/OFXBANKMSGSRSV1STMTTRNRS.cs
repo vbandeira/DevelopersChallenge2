@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXBANKMSGSRSV1STMTTRNRS
     {
-        public ushort TRNUID { get; set; }
+        [XmlElement("TRNUID")]
+        public virtual ushort TrnUid { get; set; }
 
-        public OFXBANKMSGSRSV1STMTTRNRSSTATUS STATUS { get; set; }
+        [XmlElement("STATUS")]
+        public virtual OFXBANKMSGSRSV1STMTTRNRSSTATUS Status { get; set; }
 
-        public OFXBANKMSGSRSV1STMTTRNRSSTMTRS STMTRS { get; set; }
+        [XmlElement("STMTRS")]
+        public virtual OFXBANKMSGSRSV1STMTTRNRSSTMTRS StmTrs { get; set; }
     }
 }

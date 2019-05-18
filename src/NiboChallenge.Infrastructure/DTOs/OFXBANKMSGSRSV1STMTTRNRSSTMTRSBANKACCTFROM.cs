@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXBANKMSGSRSV1STMTTRNRSSTMTRSBANKACCTFROM
     {
-        public ushort BANKID { get; set; }
+        [XmlElement("BANKID")]
+        public virtual ushort BankId { get; set; }
 
-        public ulong ACCTID { get; set; }
+        [XmlElement("ACCTID")]
+        public virtual ulong AccountId { get; set; }
 
-        public string ACCTTYPE { get; set; }
+        [XmlElement("ACCTTYPE")]
+        public virtual string AccountType { get; set; }
     }
 }

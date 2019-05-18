@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace NiboChallenge.Infrastructure.Entities
 {
     public class OFXBANKMSGSRSV1STMTTRNRSSTMTRSLEDGERBAL
     {
-        public decimal BALAMT { get; set; }
+        [XmlElement("BALAMT")]
+        public virtual decimal BalanceAmount { get; set; }
 
-        public string DTASOF { get; set; }
+        [XmlElement("DTASOF")]
+        public virtual string Date { get; set; }
     }
 }

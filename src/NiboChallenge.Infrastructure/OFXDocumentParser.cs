@@ -9,9 +9,9 @@ using NiboChallenge.Infrastructure.Entities;
 
 namespace NiboChallenge.Infrastructure
 {
-    public class OFXDocumentParser
+    public static class OFXDocumentParser
     {
-        public OFX Load(Stream stream)
+        private static OFXDocument Load(Stream stream)
         {
             using (var reader = new StreamReader(stream, Encoding.Default))
             {
@@ -19,10 +19,32 @@ namespace NiboChallenge.Infrastructure
             }
         }
 
-        //TODO: Modify to support multiple files
-        public OFX Load(string ofx) => Parse(Encoding.UTF8.GetString(Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(ofx))));
+        public static IEnumerable<OFXDocument> Load(params Stream[] streams)
+        {
+            IList<OFXDocument> documents = new List<OFXDocument>();
+            foreach (var stream in streams)
+            {
+                documents.Add(Load(stream));
+            }
+            return documents;
+        }
 
-        private string ConvertSGMLTOXML(string sgml)
+        private static OFXDocument Load(string ofx)
+        {
+            return Parse(Encoding.UTF8.GetString(Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(ofx))));
+        }
+
+        public static IEnumerable<OFXDocument> Load(params string[] ofxs)
+        {
+            IList<OFXDocument> documents = new List<OFXDocument>();
+            foreach (var ofx in ofxs)
+            {
+                documents.Add(Load(ofx));
+            }
+            return documents;
+        }
+
+        private static string ConvertSGMLTOXML(string sgml)
         {
             //TODO: Enhance function
             using (var reader = new StringReader(sgml))
@@ -60,7 +82,7 @@ namespace NiboChallenge.Infrastructure
             }
         }
 
-        private OFX Parse(string data)
+        private static OFXDocument Parse(string data)
         {
             var xmlDocument = new XmlDocument();
 
@@ -77,7 +99,7 @@ namespace NiboChallenge.Infrastructure
             xmlDocument.LoadXml(ofx);
 
             TextReader ofxReader = new StringReader(xmlDocument.InnerXml);
-            OFX ofxDocument = (OFX)new XmlSerializer(typeof(OFX)).Deserialize(ofxReader);
+            OFXDocument ofxDocument = (OFXDocument)new XmlSerializer(typeof(OFXDocument)).Deserialize(ofxReader);
 
             return ofxDocument;
         }

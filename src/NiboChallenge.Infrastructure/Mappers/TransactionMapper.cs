@@ -1,5 +1,6 @@
 ﻿using System;
 using NiboChallenge.Domain.Entities;
+using NiboChallenge.Infrastructure.DTOs;
 using NiboChallenge.Infrastructure.Entities;
 
 namespace NiboChallenge.Infrastructure.Mappers
@@ -10,10 +11,21 @@ namespace NiboChallenge.Infrastructure.Mappers
         {
             return new Transaction
             {
-                Memo = transactionDTO.MEMO,
-                TransactionAmmount = transactionDTO.TRNAMT,
-                Type = transactionDTO.TRNTYPE.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
-                DatePosted = transactionDTO.DTPOSTED //TODO: Convert to DateTime
+                Memo = transactionDTO.Memo,
+                TransactionAmount = transactionDTO.TransactionAmount,
+                Type = transactionDTO.TransactionType.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
+                DatePosted = transactionDTO.DatePosted //TODO: Convert to DateTime
+            };
+        }
+
+        public static TransactionDTO ToTransactionDTO(this Transaction transaction)
+        {
+            return new TransactionDTO
+            {
+                Memo = transaction.Memo,
+                DatePosted = transaction.DatePosted,
+                TransactionAmount = transaction.TransactionAmount,
+                Type = transaction.Type.ToString()
             };
         }
     }
