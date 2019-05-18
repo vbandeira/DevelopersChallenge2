@@ -5,6 +5,8 @@ namespace NiboChallenge.Domain.Entities
 {
     public class Transaction : IEquatable<Transaction>
     {
+        public int Id { get; set; }
+
         public TransactionType Type { get; set; }
 
         public string DatePosted { get; set; }

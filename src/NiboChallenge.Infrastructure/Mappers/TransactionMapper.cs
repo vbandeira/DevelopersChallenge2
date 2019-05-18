@@ -28,5 +28,16 @@ namespace NiboChallenge.Infrastructure.Mappers
                 Type = transaction.Type.ToString()
             };
         }
+
+        public static Transaction ToTransaction(this TransactionDTO transactionDTO)
+        {
+            return new Transaction
+            {
+                Memo = transactionDTO.Memo,
+                DatePosted = transactionDTO.DatePosted,
+                TransactionAmount = transactionDTO.TransactionAmount,
+                Type = transactionDTO.Type.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
+            };
+        }
     }
 }

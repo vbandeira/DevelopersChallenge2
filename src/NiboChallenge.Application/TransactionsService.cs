@@ -15,6 +15,11 @@ namespace NiboChallenge.Application
             _domainService = domainService;
         }
 
+        public void Add(ICollection<TransactionDTO> transactions)
+        {
+            _domainService.Add(transactions);
+        }
+
         public IEnumerable<TransactionDTO> Get()
         {
             return _domainService.GetAllTransactions();

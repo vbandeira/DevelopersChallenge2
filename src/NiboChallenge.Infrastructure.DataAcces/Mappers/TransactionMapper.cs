@@ -8,7 +8,8 @@ namespace NiboChallenge.Infrastructure.DataAccess.Mappers
     {
         public TransactionMapper(EntityTypeBuilder<Transaction> transactionBuilder)
         {
-            transactionBuilder.HasKey(t => t.DatePosted);
+            transactionBuilder.HasKey(t => t.Id);
+            transactionBuilder.Property(t => t.DatePosted).IsRequired();
             transactionBuilder.Property(t => t.Memo).IsRequired();
             transactionBuilder.Property(t => t.TransactionAmount).IsRequired();
             transactionBuilder.Property(t => t.Type).IsRequired();

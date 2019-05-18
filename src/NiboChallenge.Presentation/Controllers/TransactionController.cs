@@ -21,34 +21,61 @@ namespace NiboChallenge.Presentation.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<TransactionDTO> Get()
+        public IActionResult Get()
         {
-            return _transactionService.Get();
+            try
+            {
+                return Ok(_transactionService.Get());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public TransactionDTO GetById(string id)
+        public IActionResult GetById(string id)
         {
-            return _transactionService.GetById(id).FirstOrDefault();
+            try
+            {
+                return Ok(_transactionService.GetById(id).FirstOrDefault());
+            }
+            catch (Exception)
+            {
+                return NotFound(id);
+            }
+
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody] TransactionDTO[] transactions)
         {
+            try
+            {
+                _transactionService.Add(transactions);
+                return Created(nameof(Post), null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost, Route("CheckNewTransactions")]
+        public IActionResult CheckNewTransactions([FromBody] TransactionDTO[] transactions)
         {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                IEnumerable<TransactionDTO> dbTransactions = _transactionService.Get();
+                IEnumerable<TransactionDTO> newTransactions = transactions.Where(t => !dbTransactions.Contains(t));
+                return Ok(newTransactions);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

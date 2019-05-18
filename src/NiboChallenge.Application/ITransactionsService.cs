@@ -9,5 +9,6 @@ namespace NiboChallenge.Application
     {
         IEnumerable<TransactionDTO> Get();
         IEnumerable<TransactionDTO> GetById(string id);
+        void Add(ICollection<TransactionDTO> transactions);
     }
 }

@@ -9,5 +9,6 @@ namespace NiboChallenge.DomainServices
     {
         IEnumerable<TransactionDTO> GetAllTransactions();
         IEnumerable<TransactionDTO> GetFilteredTransactions(Func<Transaction, bool> filter);
+        void Add(IEnumerable<TransactionDTO> transactions);
     }
 }

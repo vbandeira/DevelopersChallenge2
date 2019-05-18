@@ -28,10 +28,12 @@ namespace NiboChallenge.Presentation
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<TransactionContext>(options => options.UseSqlite("Data Source=nibo.db"));
 
+            services.AddScoped<IOFXMergerApplication, OFXMergerApplication>();
             services.AddScoped<ITransactionsService, TransactionsService>();
             services.AddScoped<ITransactionDomainService, TransactionDomainService>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<DbContext, TransactionContext>();
+            services.AddScoped<IOFXMerger, OFXMerger>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

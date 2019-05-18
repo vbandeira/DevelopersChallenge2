@@ -17,6 +17,11 @@ namespace NiboChallenge.DomainServices
             _repository = repository;
         }
 
+        public void Add(IEnumerable<TransactionDTO> transactions)
+        {
+            _repository.Add(transactions.Select(TransactionMapper.ToTransaction));
+        }
+
         public IEnumerable<TransactionDTO> GetAllTransactions()
         {
             return _repository.Get().Select(TransactionMapper.ToTransactionDTO);

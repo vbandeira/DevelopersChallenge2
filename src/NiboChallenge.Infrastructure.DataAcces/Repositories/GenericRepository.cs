@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
@@ -37,8 +38,13 @@ namespace NiboChallenge.Infrastructure.DataAccess.Repositories
 
         public virtual void Add(TEntity entity)
         {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-            _entities.Add(entity);
+            Add(new List<TEntity> { entity });
+        }
+
+        public void Add(IEnumerable<TEntity> entities)
+        {
+            if (entities == null) throw new ArgumentNullException(nameof(entities));
+            _entities.AddRange(entities);
 
             if (AutoSaveChanges) this.SaveChanges();
         }
@@ -63,5 +69,7 @@ namespace NiboChallenge.Infrastructure.DataAccess.Repositories
         {
             _context.SaveChanges();
         }
+
+
     }
 }

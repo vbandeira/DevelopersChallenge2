@@ -1,0 +1,24 @@
+<h1>Consulta de transações</h1>
+
+<p *ngIf="!transactions"><em>Carregando...</em></p>
+<div *ngIf="transactions">
+  Total de transações: {{transactions.length}}<br/>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Tipo de operação</th>
+        <th>Valor</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.datePosted }}</td>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.transactionAmount }}</td>
+        <td>{{ transaction.memo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
