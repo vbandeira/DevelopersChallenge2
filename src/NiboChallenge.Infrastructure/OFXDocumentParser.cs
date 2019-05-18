@@ -46,7 +46,6 @@ namespace NiboChallenge.Infrastructure
 
         private static string ConvertSGMLTOXML(string sgml)
         {
-            //TODO: Enhance function
             using (var reader = new StringReader(sgml))
             {
                 string line;
@@ -55,21 +54,20 @@ namespace NiboChallenge.Infrastructure
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var tagEnd = line.IndexOf(">", StringComparison.CurrentCultureIgnoreCase);
-
-                    if (tagEnd != line.Length - 1)
+                    if (!line.EndsWith(">", StringComparison.CurrentCulture))
                     {
                         var tagStart = line.IndexOf("<", StringComparison.CurrentCultureIgnoreCase);
+                        var tagEnd = line.IndexOf(">", StringComparison.CurrentCultureIgnoreCase);
 
                         var tagName = line.Substring(tagStart + 1, (tagEnd - tagStart) - 1);
 
-                        if (line.IndexOf($"</{tagName}>", StringComparison.CurrentCultureIgnoreCase) > -1)
+                        if (line.Contains($"</{tagName}>"))
                         {
                             stringBuilder.AppendLine(line);
                         }
                         else
                         {
-                            stringBuilder.AppendLine(String.Concat(line, string.Format("</{0}>", tagName)));
+                            stringBuilder.AppendLine(String.Concat(line, $"</{tagName}>"));
                         }
                     }
                     else

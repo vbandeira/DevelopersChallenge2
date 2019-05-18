@@ -14,9 +14,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let transaction of transactions">
-        <td>{{ transaction.datePosted }}</td>
+        <td>{{ transaction.datePosted | date:'dd/MM/yyyy hh:mm:ss' }}</td>
         <td>{{ transaction.type }}</td>
-        <td>{{ transaction.transactionAmount }}</td>
+        <td>{{ transaction.transactionAmount | currency:'BRL':true }}</td>
         <td>{{ transaction.memo }}</td>
       </tr>
     </tbody>

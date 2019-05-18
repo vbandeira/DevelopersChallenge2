@@ -9,7 +9,7 @@ namespace NiboChallenge.Domain.Entities
 
         public TransactionType Type { get; set; }
 
-        public string DatePosted { get; set; }
+        public DateTime DatePosted { get; set; }
 
         public decimal TransactionAmount { get; set; }
 
@@ -36,9 +36,9 @@ namespace NiboChallenge.Domain.Entities
 
         public override int GetHashCode()
         {
-            var hashCode = 505846232;
+            var hashCode = 1253119681;
             hashCode = hashCode * -1521134295 + Type.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(DatePosted);
+            hashCode = hashCode * -1521134295 + DatePosted.GetHashCode();
             hashCode = hashCode * -1521134295 + TransactionAmount.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Memo);
             return hashCode;

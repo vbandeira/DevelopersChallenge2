@@ -25,9 +25,9 @@ namespace NiboChallenge.Application
             return _domainService.GetAllTransactions();
         }
 
-        public IEnumerable<TransactionDTO> GetById(string id)
+        public IEnumerable<TransactionDTO> GetById(int id)
         {
-            return _domainService.GetFilteredTransactions(x => x.DatePosted == id);
+            return _domainService.GetFilteredTransactions(x => x.Id == id);
         }
     }
 }

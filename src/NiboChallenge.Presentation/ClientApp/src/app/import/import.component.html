@@ -16,7 +16,8 @@
                     </ul>
                     <br />
                     <span>Total de transações únicas: {{mergedTransactions.length}}</span><br/>
-                    <span>Novas transações em relação ao banco de dados: {{newTransactions.length}}</span>
+                    <br/>
+                    <span>Novas transações a serem inseridas no banco de dados: {{newTransactions.length}}</span>
                     <br />
                     <button class="btn btn-success mr-1" (click)="save()">Salvar</button>
                     <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
@@ -35,9 +36,9 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let transaction of mergedTransactions">
-                        <td>{{ transaction.datePosted }}</td>
+                        <td>{{ transaction.datePosted  | date:'dd/MM/yyyy hh:mm:ss' }}</td>
                         <td>{{ transaction.type }}</td>
-                        <td>{{ transaction.transactionAmount }}</td>
+                        <td>{{ transaction.transactionAmount | currency:'BRL':true }}</td>
                         <td>{{ transaction.memo }}</td>
                     </tr>
                 </tbody>

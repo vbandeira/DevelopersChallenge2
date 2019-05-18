@@ -14,7 +14,7 @@ namespace NiboChallenge.Infrastructure.Mappers
                 Memo = transactionDTO.Memo,
                 TransactionAmount = transactionDTO.TransactionAmount,
                 Type = transactionDTO.TransactionType.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
-                DatePosted = transactionDTO.DatePosted //TODO: Convert to DateTime
+                DatePosted = ConvertOFXDateToDateTime(transactionDTO.DatePosted) 
             };
         }
 
@@ -38,6 +38,18 @@ namespace NiboChallenge.Infrastructure.Mappers
                 TransactionAmount = transactionDTO.TransactionAmount,
                 Type = transactionDTO.Type.ToUpper().Trim() == "CREDIT" ? TransactionType.CREDIT : TransactionType.DEBIT,
             };
+        }
+
+        private static DateTime ConvertOFXDateToDateTime(string ofxDate)
+        {
+            int year = Convert.ToInt16(ofxDate.Substring(0, 4));
+            int month = Convert.ToInt16(ofxDate.Substring(4, 2));
+            int day = Convert.ToInt16(ofxDate.Substring(6, 2));
+            int hours = Convert.ToInt16(ofxDate.Substring(8, 2));
+            int minutes = Convert.ToInt16(ofxDate.Substring(10, 2));
+            int seconds = Convert.ToInt16(ofxDate.Substring(12, 2));
+
+            return new DateTime(year, month, day, hours, minutes, seconds);
         }
     }
 }

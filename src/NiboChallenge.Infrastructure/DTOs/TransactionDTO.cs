@@ -5,7 +5,7 @@ namespace NiboChallenge.Infrastructure.DTOs
     {
         public string Type { get; set; }
 
-        public string DatePosted { get; set; }
+        public DateTime DatePosted { get; set; }
 
         public decimal TransactionAmount { get; set; }
 

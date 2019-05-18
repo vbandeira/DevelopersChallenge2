@@ -11,7 +11,6 @@ namespace NiboChallenge.DomainServices.Tests
         public void ShouldMergeTransactions()
         {
             // Arrange
-            //TODO: Mock two or more OFX documents
             Mock<OFXDocument> mockDocument1 = new Mock<OFXDocument>();
             Mock<OFXDocument> mockDocument2 = new Mock<OFXDocument>();
 
@@ -54,12 +53,10 @@ namespace NiboChallenge.DomainServices.Tests
                 });
 
             // Act
-            //TODO: Instantiate OFXMerger and process data
             OFXMerger merger = new OFXMerger();
             merger.AddTransactions(mockDocument1.Object, mockDocument2.Object);
 
             // Assert
-            //TODO: Assert result
             Assert.NotNull(merger.Transactions);
             Assert.True(merger.Transactions.Count == 3);
         }

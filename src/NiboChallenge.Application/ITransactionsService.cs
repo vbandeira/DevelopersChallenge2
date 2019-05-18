@@ -8,7 +8,7 @@ namespace NiboChallenge.Application
     public interface ITransactionsService
     {
         IEnumerable<TransactionDTO> Get();
-        IEnumerable<TransactionDTO> GetById(string id);
+        IEnumerable<TransactionDTO> GetById(int id);
         void Add(ICollection<TransactionDTO> transactions);
     }
 }

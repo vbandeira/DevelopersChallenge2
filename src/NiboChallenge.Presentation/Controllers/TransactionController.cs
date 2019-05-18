@@ -25,7 +25,7 @@ namespace NiboChallenge.Presentation.Controllers
         {
             try
             {
-                return Ok(_transactionService.Get());
+                return Ok(_transactionService.Get().OrderBy(x => x.DatePosted));
             }
             catch (Exception)
             {
@@ -36,7 +36,7 @@ namespace NiboChallenge.Presentation.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetById(int id)
         {
             try
             {
