@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -10,17 +10,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NiboChallenge.Infrastructure\NiboChallenge.Infrastructure.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="extrato1.ofx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappers\" />
+    <ProjectReference Include="..\NiboChallenge.Infrastructure.DataAcces\NiboChallenge.Infrastructure.DataAccess.csproj" />
   </ItemGroup>
 </Project>

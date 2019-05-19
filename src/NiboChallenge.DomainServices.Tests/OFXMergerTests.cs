@@ -54,7 +54,7 @@ namespace NiboChallenge.DomainServices.Tests
 
             // Act
             OFXMerger merger = new OFXMerger();
-            merger.AddTransactions(mockDocument1.Object, mockDocument2.Object);
+            merger.AddTransactionsAndMerge(mockDocument1.Object, mockDocument2.Object);
 
             // Assert
             Assert.NotNull(merger.Transactions);

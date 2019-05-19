@@ -20,14 +20,29 @@ namespace NiboChallenge.Infrastructure.DataAccess.Repositories
             AutoSaveChanges = autoSaveChanges;
         }
 
-        public virtual IQueryable<TEntity> Get(Func<TEntity, bool> Where = null, params Expression<Func<TEntity, object>>[] Include)
+        public virtual IQueryable<TEntity> Get()
+        {
+            return Get(Where: null, Include: null);
+        }
+
+        public virtual IQueryable<TEntity> Get(Func<TEntity, bool> where)
+        {
+            return Get(Where: where);
+        }
+
+        public virtual IQueryable<TEntity> Get(params Expression<Func<TEntity, object>>[] include)
+        {
+            return Get(Where: null, Include: include);
+        }
+
+        public virtual IQueryable<TEntity> Get(Func<TEntity, bool> Where, params Expression<Func<TEntity, object>>[] Include)
         {
             IQueryable<TEntity> result = _entities;
 
             if (Where != null)
                 result = result.Where(Where).AsQueryable();
 
-            if (Include.Any())
+            if (Include != null && Include.Any())
             {
                 foreach (var include in Include)
                     result = result.Include(include);

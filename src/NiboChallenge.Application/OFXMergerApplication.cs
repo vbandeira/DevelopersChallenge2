@@ -23,21 +23,15 @@ namespace NiboChallenge.Application
         public IEnumerable<TransactionDTO> ImportFiles(params string[] filesContent)
         {
             IEnumerable<OFXDocument> ofxDocuments = OFXDocumentParser.Load(filesContent);
-            _ofxMerger.AddTransactions(ofxDocuments.ToArray());
+            _ofxMerger.AddTransactionsAndMerge(ofxDocuments.ToArray());
             return _ofxMerger.Transactions.Select(TransactionMapper.ToTransactionDTO).AsEnumerable();
         }
 
         public IEnumerable<TransactionDTO> ImportFiles(Stream fileStream)
         {
             IEnumerable<OFXDocument> ofxDocuments = OFXDocumentParser.Load(fileStream);
-            _ofxMerger.AddTransactions(ofxDocuments.ToArray());
+            _ofxMerger.AddTransactionsAndMerge(ofxDocuments.ToArray());
             return _ofxMerger.Transactions.Select(TransactionMapper.ToTransactionDTO).AsEnumerable();
-        }
-
-
-        public void SaveTransactions(IEnumerable<Transaction> transactions)
-        {
-            throw new NotImplementedException();
         }
     }
 }

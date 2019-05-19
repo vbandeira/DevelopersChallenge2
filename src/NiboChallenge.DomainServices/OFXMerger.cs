@@ -15,7 +15,7 @@ namespace NiboChallenge.DomainServices
         /// Gets the transactions from OFX files, detect the new ones and add them to collection.
         /// </summary>
         /// <param name="ofxDocuments">Ofx documents.</param>
-        public void AddTransactions(params OFXDocument[] ofxDocuments)
+        public void AddTransactionsAndMerge(params OFXDocument[] ofxDocuments)
         {
             foreach (OFXDocument document in ofxDocuments)
             {

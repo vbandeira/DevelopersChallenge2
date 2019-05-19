@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NiboChallenge.Domain.Entities;
 using NiboChallenge.DomainServices;
 using NiboChallenge.Infrastructure.DTOs;
@@ -15,7 +16,7 @@ namespace NiboChallenge.Application
             _domainService = domainService;
         }
 
-        public void Add(ICollection<TransactionDTO> transactions)
+        public void Add(IEnumerable<TransactionDTO> transactions)
         {
             _domainService.Add(transactions);
         }
@@ -25,9 +26,9 @@ namespace NiboChallenge.Application
             return _domainService.GetAllTransactions();
         }
 
-        public IEnumerable<TransactionDTO> GetById(int id)
+        public TransactionDTO GetById(int id)
         {
-            return _domainService.GetFilteredTransactions(x => x.Id == id);
+            return _domainService.GetFilteredTransactions(x => x.Id == id).First();
         }
     }
 }

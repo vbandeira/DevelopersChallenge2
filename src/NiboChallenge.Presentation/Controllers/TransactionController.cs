@@ -40,7 +40,7 @@ namespace NiboChallenge.Presentation.Controllers
         {
             try
             {
-                return Ok(_transactionService.GetById(id).FirstOrDefault());
+                return Ok(_transactionService.GetById(id));
             }
             catch (Exception)
             {

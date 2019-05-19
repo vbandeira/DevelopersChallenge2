@@ -7,8 +7,15 @@ namespace NiboChallenge.DomainServices
 {
     public interface IOFXMerger
     {
+        /// <summary>
+        /// Property with the list of processed Transactions
+        /// </summary>
         IList<Transaction> Transactions { get; }
 
-        void AddTransactions(params OFXDocument[] ofxDocuments);
+        /// <summary>
+        /// Parses the OFX Documents supplied and merge them, removing duplicates
+        /// </summary>
+        /// <param name="ofxDocuments">Collection of OFX Documents</param>
+        void AddTransactionsAndMerge(params OFXDocument[] ofxDocuments);
     }
 }
